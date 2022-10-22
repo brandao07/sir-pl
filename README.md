@@ -1,14 +1,13 @@
 # Sistemas de Informação em Rede
 
-## 2-css
+## Ex. 1
 
-### Palette:
+- [Ex 1 HTML](./1-html)
+    - [HTML](./1-html/index.html)
 
-- #495C83
-- #7A86B6
-- #A8A4CE
-- #C8B6E2
+## Ex. 2
 
-### Quote:
-
-_Put a little light in your day_
+- [Ex 2 CSS](./2-css)
+  - [HTML](./2-css/index.html)
+  - [CSS](./2-css/styles.css)
+  - [Wireframe](./2-css/figma/wireframe_v2.png)
