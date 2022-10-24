@@ -12,24 +12,24 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
-    color: #495C83;
+    color: #3D84B8;
     font-weight: bolder;
 }
 
 p {
-    color: #7A86B6;
+    color: #7FBCD2;
     font-weight: bold;
 }
 
 /* Sections */
 
 .dark-section {
-    background-color: #A8A4CE;
+    background-color: #A5F1E9;
     padding: 4rem 2rem;
 }
 
 .light-section {
-    background-color: #DFD3C3;
+    background-color: #E1FFEE;
     padding: 4rem 2rem;
 }
 
@@ -82,12 +82,12 @@ p {
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #495C83;
+    background-color: #3D84B8;
     border-width: 0;
 }
 
 .form-label {
-    color: #495C83;
+    color: #3D84B8;
 }
 
 .center-form {
@@ -99,7 +99,7 @@ p {
 
 .footer-icon {
     padding-top: 4rem;
-    color: #495C83;
+    color: #3D84B8;
 }
 
 .footer-link {
@@ -108,5 +108,5 @@ p {
 }
 
 .footer-icon:hover {
-    color: #A8A4CE;
+    color: #A5F1E9;
 }
