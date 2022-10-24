@@ -74,6 +74,27 @@ p {
     width: 300px;
 }
 
+/* Get In Touch Section */
+
+.center-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #495C83;
+    border-width: 0;
+}
+
+.form-label {
+    color: #495C83;
+}
+
+.center-form {
+    display:block;
+    margin: 0 auto;
+}
+
 /* Footer Section */
 
 .footer-icon {
