@@ -52,6 +52,7 @@ p {
 }
 
 .hero-img {
+    width: 200px;
     border-radius: 50%;
 }
 
@@ -59,6 +60,18 @@ p {
     .hero-img {
         padding-top: 30px;
     }
+}
+
+/* Skills Section */
+
+.skill-img {
+    width: 100px;
+}
+
+/* Courses Section */
+
+.course-img {
+    width: 300px;
 }
 
 /* Footer Section */
