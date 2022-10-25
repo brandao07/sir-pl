@@ -12,25 +12,32 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
-    color: #3D84B8;
     font-weight: bolder;
 }
 
 p {
-    color: #7FBCD2;
+    color: #FFFFFF;
     font-weight: bold;
 }
 
 /* Sections */
 
 .dark-section {
-    background-color: #A5F1E9;
+    background-color: #355C7D;
     padding: 4rem 2rem;
 }
 
 .light-section {
-    background-color: #E1FFEE;
+    background-color: #C06C84;
     padding: 4rem 2rem;
+}
+
+.light-section h1, h2, h3, h4, h5, h6 {
+    color: #355C7D;
+}
+
+.dark-section h1, h2, h3, h4, h5, h6 {
+    color: #C06C84;
 }
 
 .section-title {
@@ -44,7 +51,7 @@ p {
 /* Hero Section */
 
 .hero-quote {
-    font-family: 'Sacramento', cursive;
+    font-family: 'Merriweather', serif;
     padding-top: 30px;
     font-size: 4rem;
     text-align: center;
@@ -82,12 +89,12 @@ p {
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #3D84B8;
+    background-color: #C06C84;
     border-width: 0;
 }
 
 .form-label {
-    color: #3D84B8;
+    color: #FFFFFF;
 }
 
 .center-form {
@@ -99,7 +106,7 @@ p {
 
 .footer-icon {
     padding-top: 4rem;
-    color: #3D84B8;
+    color: #355C7D;
 }
 
 .footer-link {
@@ -108,5 +115,5 @@ p {
 }
 
 .footer-icon:hover {
-    color: #A5F1E9;
+    color: #FFFFFF;
 }
