@@ -1,10 +1,10 @@
 <?php
 function pdo_connect_mysql()
 {
-    $DATABASE_HOST = '127.0.0.1';
-    $DATABASE_USER = 'USER';
-    $DATABASE_PASS = 'PASSWORD';
-    $DATABASE_NAME = 'DATABASE';
+    $DATABASE_HOST = 'host.docker.internal';
+    $DATABASE_USER = 'brandao';
+    $DATABASE_PASS = 'brandao';
+    $DATABASE_NAME = 'db';
     $DATABASE_PORT = '3306';
     $CHARSET = 'utf8mb4';
     $options = [

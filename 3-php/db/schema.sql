@@ -163,4 +163,5 @@ CREATE TABLE `users` (
                          CONSTRAINT `users_roles_null_fk` FOREIGN KEY (`id_roles`) REFERENCES `roles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
+INSERT INTO roles (type) VALUE ('admin');
+INSERT INTO roles (type) VALUE ('manager');
