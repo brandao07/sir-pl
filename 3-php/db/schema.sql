@@ -1,14 +1,19 @@
-CREATE TABLE `certificate_infos` (
-                                     `id` bigint NOT NULL AUTO_INCREMENT,
-                                     `name` varchar(25) DEFAULT NULL,
-                                     `is_deleted` tinyint(1) DEFAULT '0',
-                                     `id_educations` bigint DEFAULT NULL,
-                                     `id_files` bigint DEFAULT NULL,
-                                     PRIMARY KEY (`id`),
-                                     KEY `certificate_infos_educations_null_fk` (`id_educations`),
-                                     KEY `certificate_infos_files_null_fk` (`id_files`),
-                                     CONSTRAINT `certificate_infos_educations_null_fk` FOREIGN KEY (`id_educations`) REFERENCES `educations` (`id`),
-                                     CONSTRAINT `certificate_infos_files_null_fk` FOREIGN KEY (`id_files`) REFERENCES `files` (`id`)
+CREATE TABLE `files` (
+                         `id` bigint NOT NULL AUTO_INCREMENT,
+                         `file_data` mediumblob NOT NULL,
+                         `is_deleted` tinyint(1) DEFAULT '0',
+                         PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `me` (
+                      `id` bigint NOT NULL AUTO_INCREMENT,
+                      `name` varchar(25) DEFAULT NULL,
+                      `quote` varchar(50) DEFAULT NULL,
+                      `is_deleted` tinyint(1) DEFAULT '0',
+                      `files_id` bigint DEFAULT NULL,
+                      PRIMARY KEY (`id`),
+                      KEY `me_files_null_fk` (`files_id`),
+                      CONSTRAINT `me_files_null_fk` FOREIGN KEY (`files_id`) REFERENCES `files` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `certificates` (
@@ -19,6 +24,19 @@ CREATE TABLE `certificates` (
                                 PRIMARY KEY (`id`),
                                 KEY `certificates_me_null_fk` (`id_me`),
                                 CONSTRAINT `certificates_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `certificate_infos` (
+                                     `id` bigint NOT NULL AUTO_INCREMENT,
+                                     `name` varchar(25) DEFAULT NULL,
+                                     `is_deleted` tinyint(1) DEFAULT '0',
+                                     `id_certificates` bigint DEFAULT NULL,
+                                     `id_files` bigint DEFAULT NULL,
+                                     PRIMARY KEY (`id`),
+                                     KEY `certificate_infos_certificates_null_fk` (`id_certificates`),
+                                     KEY `certificate_infos_files_null_fk` (`id_files`),
+                                     CONSTRAINT `certificate_infos_certificates_null_fk` FOREIGN KEY (`id_certificates`) REFERENCES `certificates` (`id`),
+                                     CONSTRAINT `certificate_infos_files_null_fk` FOREIGN KEY (`id_files`) REFERENCES `files` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `contact_requests` (
@@ -33,16 +51,6 @@ CREATE TABLE `contact_requests` (
                                     CONSTRAINT `contact_requests_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `education_infos` (
-                                   `id` bigint NOT NULL AUTO_INCREMENT,
-                                   `description` varchar(100) DEFAULT NULL,
-                                   `is_deleted` tinyint(1) DEFAULT '0',
-                                   `id_educations` bigint DEFAULT NULL,
-                                   PRIMARY KEY (`id`),
-                                   KEY `education_infos_educations_null_fk` (`id_educations`),
-                                   CONSTRAINT `education_infos_educations_null_fk` FOREIGN KEY (`id_educations`) REFERENCES `educations` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `educations` (
                               `id` bigint NOT NULL AUTO_INCREMENT,
                               `name` varchar(50) DEFAULT NULL,
@@ -54,11 +62,14 @@ CREATE TABLE `educations` (
                               CONSTRAINT `educations_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `files` (
-                         `id` bigint NOT NULL AUTO_INCREMENT,
-                         `file_data` mediumblob NOT NULL,
-                         `is_deleted` tinyint(1) DEFAULT '0',
-                         PRIMARY KEY (`id`)
+CREATE TABLE `education_infos` (
+                                   `id` bigint NOT NULL AUTO_INCREMENT,
+                                   `description` varchar(100) DEFAULT NULL,
+                                   `is_deleted` tinyint(1) DEFAULT '0',
+                                   `id_educations` bigint DEFAULT NULL,
+                                   PRIMARY KEY (`id`),
+                                   KEY `education_infos_educations_null_fk` (`id_educations`),
+                                   CONSTRAINT `education_infos_educations_null_fk` FOREIGN KEY (`id_educations`) REFERENCES `educations` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `languages` (
@@ -69,17 +80,6 @@ CREATE TABLE `languages` (
                              PRIMARY KEY (`id`),
                              KEY `languages_me_null_fk` (`id_me`),
                              CONSTRAINT `languages_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `me` (
-                      `id` bigint NOT NULL AUTO_INCREMENT,
-                      `name` varchar(25) DEFAULT NULL,
-                      `quote` varchar(50) DEFAULT NULL,
-                      `is_deleted` tinyint(1) DEFAULT '0',
-                      `files_id` bigint DEFAULT NULL,
-                      PRIMARY KEY (`id`),
-                      KEY `me_files_null_fk` (`files_id`),
-                      CONSTRAINT `me_files_null_fk` FOREIGN KEY (`files_id`) REFERENCES `files` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `me_infos` (
@@ -100,6 +100,16 @@ CREATE TABLE `roles` (
                          UNIQUE KEY `roles_type_unique` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `skills` (
+                          `id` bigint NOT NULL AUTO_INCREMENT,
+                          `description` varchar(200) DEFAULT NULL,
+                          `is_deleted` tinyint(1) DEFAULT '0',
+                          `id_me` bigint DEFAULT NULL,
+                          PRIMARY KEY (`id`),
+                          KEY `skills_me_null_fk` (`id_me`),
+                          CONSTRAINT `skills_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `skill_infos` (
                                `id` bigint NOT NULL AUTO_INCREMENT,
                                `name` varchar(25) DEFAULT NULL,
@@ -111,16 +121,6 @@ CREATE TABLE `skill_infos` (
                                KEY `skill_infos_skills_null_fk` (`id_skills`),
                                CONSTRAINT `skill_infos_files_null_fk` FOREIGN KEY (`id_files`) REFERENCES `files` (`id`),
                                CONSTRAINT `skill_infos_skills_null_fk` FOREIGN KEY (`id_skills`) REFERENCES `skills` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `skills` (
-                          `id` bigint NOT NULL AUTO_INCREMENT,
-                          `description` varchar(200) DEFAULT NULL,
-                          `is_deleted` tinyint(1) DEFAULT '0',
-                          `id_me` bigint DEFAULT NULL,
-                          PRIMARY KEY (`id`),
-                          KEY `skills_me_null_fk` (`id_me`),
-                          CONSTRAINT `skills_me_null_fk` FOREIGN KEY (`id_me`) REFERENCES `me` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `social_medias` (
