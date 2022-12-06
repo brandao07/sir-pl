@@ -1,0 +1,119 @@
+/* Test */
+
+.test {
+    border: 1px solid red;
+}
+
+/* HTML Tags */
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: bolder;
+}
+
+p {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+/* Sections */
+
+.dark-section {
+    background-color: #355C7D;
+    padding: 4rem 2rem;
+}
+
+.light-section {
+    background-color: #C06C84;
+    padding: 4rem 2rem;
+}
+
+.light-section h1, h2, h3, h4, h5, h6 {
+    color: #355C7D;
+}
+
+.dark-section h1, h2, h3, h4, h5, h6 {
+    color: #C06C84;
+}
+
+.section-title {
+    padding-bottom: 30px;
+}
+
+.section-second-title {
+    padding-bottom: 10px;
+}
+
+/* Hero Section */
+
+.hero-quote {
+    font-family: 'Merriweather', serif;
+    padding-top: 30px;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: unset;
+}
+
+.hero-img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+@media (max-width: 891px) {
+    .hero-img {
+        padding-top: 30px;
+    }
+}
+
+/* Skills Section */
+
+.skill-img {
+    width: 100px;
+}
+
+/* Courses Section */
+
+.course-img {
+    width: 300px;
+}
+
+/* Get In Touch Section */
+
+.center-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #C06C84;
+    border-width: 0;
+}
+
+.form-label {
+    color: #FFFFFF;
+}
+
+.center-form {
+    display:block;
+    margin: 0 auto;
+}
+
+/* Footer Section */
+
+.footer-icon {
+    padding-top: 4rem;
+    color: #355C7D;
+}
+
+.footer-link {
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.footer-icon:hover {
+    color: #FFFFFF;
+}
