@@ -22,8 +22,8 @@ echo <<<EOT
     <nav class="navtop">
     	<div>
     		<h1>Hello $username</h1>
-    		<!--<a href="../languages/read.php"><i class="fas fa-address-book"></i>Languages</a>-->
-
+    		<a href="../abouts/read.php"><i class="fas fa-address-book"></i>Abouts</a>
+    		<a href="../dashboard/dashboard.php"><i class="fas fa-address-book"></i>Dashboard</a>
 			<a href="../../auth/logout.php">Logout</a>
     	</div>
     </nav>

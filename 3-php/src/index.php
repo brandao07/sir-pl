@@ -1,3 +1,16 @@
+<?php
+require "utils/functions.php";
+require "db/connection.php";
+
+$pdo = pdo_connect_mysql();
+$stmt = $pdo->prepare('SELECT * FROM me WHERE id = 1');
+$stmt->execute();
+$me = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$me) {
+    exit('Portfolio doesn\'t exist with that ID!');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +56,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto col-lg-4">
-                <p class="hero-quote">Put a little light in your day</p>
+                <p class="hero-quote"><?= $me["quote"]?></p>
             </div>
             <div class="col-auto my-auto">
                 <img
@@ -61,7 +74,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto section-title">
-                <h1>Hi, I'm André !</h1>
+                <h1>Hi, I'm <?= $me["name"]?> !</h1>
             </div>
         </div>
         <div class="row">
@@ -131,13 +144,7 @@ During my academic journey, I've found something that I truly love
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <p>
-                    I'm a self-improvement enthusiast, I love exploring things by
-                    myself and learn beautiful tech. On my free time I usually try to
-                    improve or get comfortable with a specific technology. Knowledge
-                    is power. I also am a good team-member, although I think it
-                    depends mostly on whom I'm working with. Personally I think I'm
-                    more into working on the backend side, styling and making things
-                    pretty were never my thing. Although I love making clean code!
+                    <?= $me["skills_description"]?>
                 </p>
             </div>
         </div>
@@ -205,9 +212,7 @@ During my academic journey, I've found something that I truly love
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <p>
-I speak native portuguese, but I'm also well fluent in english.
-                    Usually all the work I do, I write it in english because I think
-                    communication is key.
+                    <?= $me["languages_description"]?>
                 </p>
             </div>
         </div>
@@ -223,9 +228,7 @@ I speak native portuguese, but I'm also well fluent in english.
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <p>
-                In my extra time I love to explore and improve my skills. Courses
-                give me a beginner boost to start building my knowledge around that
-                tool.
+                <?= $me["certificates_description"]?>
             </p>
         </div>
     </div>
