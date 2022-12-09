@@ -7,3 +7,9 @@
 - [How to connect to MySQL using PDO](https://phpdelusions.net/pdo_examples/connect_to_mysql)
 
 - [Docker PHP MySQL connection refused](https://stackoverflow.com/questions/47993571/docker-php-mysql-connection-refused)
+
+- [Displaying a Base64 images from a database via PHP](https://stackoverflow.com/questions/16262098/displaying-a-base64-images-from-a-database-via-php)
+
+- [PHP Docs](https://www.php.net/docs.php)
+
+- [Project Structure](https://github.com/marcelowolfsmartindustries/my-profile)

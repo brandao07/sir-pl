@@ -7,7 +7,7 @@ function debug_to_console($data): void
     if (is_array($output))
         $output = implode(',', $output);
 
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log('" . $output . "' );</script>";
 }
 
 $pdo = pdo_connect_mysql();
@@ -17,21 +17,30 @@ $stmt = $pdo->prepare('SELECT * FROM me WHERE id = 1');
 $stmt->execute();
 $me = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->prepare('SELECT * FROM files WHERE id = ?');
-$stmt->execute([$me["files_id"]]);
-$me_image = $stmt->fetch(PDO::FETCH_ASSOC);
-$me_image = $me_image["file_data"];
-//FIXME: 414 (Request-URI Too Long
-debug_to_console($me_image);
-
 // ABOUT
 $stmt = $pdo->prepare('SELECT * FROM abouts WHERE id_me = 1 AND is_deleted = 0');
 $stmt->execute();
 $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // EDUCATION
+$stmt = $pdo->prepare('SELECT * from educations WHERE id_me = 1 AND is_deleted = 0');
+$stmt->execute();
+$educations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//
+// SKILLS
+$stmt = $pdo->prepare('SELECT * from skills WHERE id_me = 1 AND is_deleted = 0');
+$stmt->execute();
+$skills = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// COURSES
+$stmt = $pdo->prepare('SELECT * from certificates WHERE id_me = 1 AND is_deleted = 0');
+$stmt->execute();
+$certificates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// SOCIAL MEDIAS
+$stmt = $pdo->prepare('SELECT * from social_medias WHERE id_me = 1 AND is_deleted = 0');
+$stmt->execute();
+$medias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +94,7 @@ $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img
                         alt=<?= $me["name"] ?>
                         class="hero-img"
-                        src=<?= $me_image ?>
+                        src=<?= $me["image"]?>
                         width="250"
                 />
             </div>
@@ -119,26 +128,21 @@ $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h1>Education</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-10 col-sm-auto section-second-title">
-                <h5>Polytechnic Institute of Viana do Castelo</h5>
+        <?php foreach ($educations as $e): ?>
+            <div class="row">
+                <div class="col-lg-10 col-sm-auto section-second-title">
+                    <h5><?=$e["name"]?></h5>
+                </div>
+                <div class="col-auto section-second-title">
+                    <h5 class="education-date"><?=$e["duration"]?></h5>
+                </div>
             </div>
-            <div class="col-auto section-second-title">
-                <h5 class="education-date">2020-Present</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><?=$e["description"]?></p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Bachelor's Finalist, taking Computer Science and Engineering.</p>
-                <p>
-                    During my academic journey, I've found something that I truly love
-                    and live for.
-                </p>
-                <p>
-                    Backend Engineering is probably the area that I love the most.
-                </p>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>
 <!-- Skills Section -->
@@ -169,34 +173,15 @@ $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                     />
                 </div>
-                <div class="carousel-item">
-                    <img
-                            alt="golang"
-                            class="d-block skill-img mx-auto"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
-                    />
-                </div>
-                <div class="carousel-item">
-                    <img
-                            alt="java"
-                            class="d-block skill-img mx-auto"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"
-                    />
-                </div>
-                <div class="carousel-item">
-                    <img
-                            alt="postgresql"
-                            class="d-block skill-img mx-auto"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg"
-                    />
-                </div>
-                <div class="carousel-item">
-                    <img
-                            alt="mongodb"
-                            class="d-block skill-img mx-auto"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg"
-                    />
-                </div>
+                <?php foreach ($skills as $s): ?>
+                    <div class="carousel-item">
+                        <img
+                                alt="<?= $s["name"]?>"
+                                class="d-block skill-img mx-auto"
+                                src="<?= $s["image"]?>"
+                        />
+                    </div>
+                <?php endforeach; ?>
             </div>
             <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselSkills" type="button">
                 <span aria-hidden="true" class="carousel-control-prev-icon"></span>
@@ -253,20 +238,15 @@ $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         src="./assets/typescript-course.png"
                 />
             </div>
-            <div class="carousel-item">
-                <img
-                        alt="web-bootcamp-course"
-                        class="d-block course-img mx-auto"
-                        src="./assets/bootcamp-course.png"
-                />
-            </div>
-            <div class="carousel-item">
-                <img
-                        alt="react-graphql-course"
-                        class="d-block course-img mx-auto"
-                        src="./assets/graphql-react-course.png"
-                />
-            </div>
+            <?php foreach ($certificates as $c): ?>
+                <div class="carousel-item">
+                    <img
+                            alt="<?= $c["name"]?>"
+                            class="d-block skill-img mx-auto"
+                            src="<?= $c["image"]?>"
+                    />
+                </div>
+            <?php endforeach; ?>
         </div>
         <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselCourses" type="button">
             <span aria-hidden="true" class="carousel-control-prev-icon"></span>
@@ -324,41 +304,15 @@ $abouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <section class="light-section">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-auto">
-                <a
-                        class="footer-link"
-                        href="https://www.last.fm/user/sunkye"
-                        target="_blank"
-                >LastFM</a>
-            </div>
-            <div class="col-auto">
-                <a
-                        class="footer-link"
-                        href="https://github.com/brandao07"
-                        target="_blank"
-                >GitHub</a>
-            </div>
-            <div class="col-auto">
-                <a
-                        class="footer-link"
-                        href="https://www.linkedin.com/in/andre-brandao07/"
-                        target="_blank"
-                >LinkedIn</a>
-            </div>
-            <div class="col-auto">
-                <a
-                        class="footer-link"
-                        href="https://www.instagram.com/brandao_237/"
-                        target="_blank"
-                >Instagram</a>
-            </div>
-            <div class="col-auto">
-                <a
-                        class="footer-link"
-                        href="https://twitter.com/brandao_237"
-                        target="_blank"
-                >Twitter</a>
-            </div>
+            <?php foreach ($medias as $m): ?>
+                <div class="col-auto">
+                    <a
+                            class="footer-link"
+                            href="<?=$m["url"]?>"
+                            target="_blank"
+                    ><?=$m["name"]?></a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

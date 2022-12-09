@@ -19,6 +19,8 @@ if (!empty($_POST)) {
     <form action="create.php" method="post">
         <label for="description">Description</label>
         <input type="text" name="description" placeholder="Student" id="description">
+        <br>
+        <br>
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>

@@ -8,12 +8,13 @@ if (isset($_GET['id'])) {
     if (!empty($_POST)) {
         $name = $_POST['name'] ?? '';
         $quote = $_POST['quote'] ?? '';
+        $image = $_POST['image'] ?? '';
         $languages_description = $_POST['languages_description'] ?? '';
         $certificates_description = $_POST['certificates_description'] ?? '';
         $skills_description = $_POST['skills_description'] ?? '';
 
-        $stmt = $pdo->prepare('UPDATE me SET name = ?, quote = ?, languages_description = ?, certificates_description = ?, skills_description = ?  WHERE id = ?');
-        $stmt->execute([$name, $quote, $languages_description, $certificates_description, $skills_description, $_GET['id']]);
+        $stmt = $pdo->prepare('UPDATE me SET name = ?, quote = ?, image = ? ,languages_description = ?, certificates_description = ?, skills_description = ?  WHERE id = ?');
+        $stmt->execute([$name, $quote, $image ,$languages_description, $certificates_description, $skills_description, $_GET['id']]);
         $msg = 'Updated Successfully!';
     }
     $stmt = $pdo->prepare('SELECT * FROM me WHERE id = ?');
@@ -34,18 +35,28 @@ if (isset($_GET['id'])) {
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Name" value="<?= $me['name'] ?>"
                    id="name">
+            <br>
             <label for="quote">Quote</label>
             <input type="text" name="quote" placeholder="Quote" value="<?= $me['quote'] ?>"
                    id="quote">
+            <br>
+            <label for="image">Image</label>
+            <input type="text" name="image" placeholder="Image" value="<?= $me['image'] ?>"
+                   id="image">
+            <br>
             <label for="languages_description">Languages Description</label>
             <input type="text" name="languages_description" placeholder="Languages Description" value="<?= $me['languages_description'] ?>"
                    id="languages_description">
+            <br>
             <label for="certificates_description">Certificates Description</label>
             <input type="text" name="certificates_description" placeholder="Certificates Description" value="<?= $me['certificates_description'] ?>"
                    id="certificates_description">
+            <br>
             <label for="skills_description">Skills Description</label>
             <input type="text" name="skills_description" placeholder="Skills Description" value="<?= $me['skills_description'] ?>"
                    id="skills_description">
+            <br>
+            <br>
             <input type="submit" value="Update">
         </form>
         <?php if ($msg): ?>

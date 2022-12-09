@@ -22,7 +22,6 @@ $me = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>Languages Description</td>
                 <td>Certificates Description</td>
                 <td>Skills Description</td>
-                <td>Deleted</td>
                 <td></td>
             </tr>
             </thead>
@@ -34,7 +33,6 @@ $me = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?=$m['languages_description']?></td>
                     <td><?=$m['certificates_description']?></td>
                     <td><?=$m['skills_description']?></td>
-                    <td><?=$m['is_deleted']?></td>
                     <td class="actions">
                         <a href="update.php?id=<?=$m['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     </td>

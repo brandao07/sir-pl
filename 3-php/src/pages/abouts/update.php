@@ -29,6 +29,8 @@ if (isset($_GET['id'])) {
     <form action="update.php?id=<?=$about['id']?>" method="post">
         <label for="description">Description</label>
         <input type="text" name="description" placeholder="Name" value="<?=$about['description']?>" id="description">
+        <br>
+        <br>
         <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>
