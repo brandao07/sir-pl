@@ -23,8 +23,9 @@ $num_abouts = $pdo->query('SELECT COUNT(*) FROM contact_requests')->fetchColumn(
             <thead>
             <tr>
                 <td>#</td>
-                <td>Name</td>
-                <td>URL</td>
+                <td>Email</td>
+                <td>Subject</td>
+                <td>Description</td>
             </tr>
             </thead>
             <tbody>
