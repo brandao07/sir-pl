@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 <?=template_header('Read')?>
 
     <div class="content update">
-        <h2>Update About #<?=$education['id']?></h2>
+        <h2>Update Education #<?=$education['id']?></h2>
         <form action="update.php?id=<?=$education['id']?>" method="post">
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Name" value="<?=$education['name']?>" id="name">

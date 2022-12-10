@@ -23,6 +23,7 @@ echo <<<EOT
     	<div>
     		<h1>Hello $username</h1>
     		<a href="../messages/read.php"><i class="fas fa-address-book"></i>Messages</a>
+    		<a href="../medias/read.php"><i class="fas fa-address-book"></i>Medias</a>
     		<a href="../certificates/read.php"><i class="fas fa-address-book"></i>Certificates</a>
     		<a href="../skills/read.php"><i class="fas fa-address-book"></i>Skills</a>
     		<a href="../educations/read.php"><i class="fas fa-address-book"></i>Educations</a>

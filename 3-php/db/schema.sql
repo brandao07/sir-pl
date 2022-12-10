@@ -152,7 +152,7 @@ create table if not exists users
         foreign key (id_roles) references roles (id)
 );
 
-
 INSERT INTO me (id) VALUE (1);
 INSERT INTO roles (type) VALUE ('admin');
 INSERT INTO roles (type) VALUE ('manager');
+INSERT INTO users (name, username, password, id_me, id_roles) VALUE ('admin', 'admin', '$2y$10$CcLohVKD6ziT3Q7GI.obLOqDNR7u1wsSat.x4HDsi24VO19KYqHkq', 1, 1);

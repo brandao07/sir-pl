@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, username, password FROM users WHERE username = :username";
+        $sql = "SELECT id, username, password FROM users WHERE username = :username AND is_deleted = 0";
         
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
@@ -116,9 +116,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                                         <div class="text-center text-lg-start mt-4 pt-2">
                                             <input type="submit" class="btn btn-primary" value="Login">
-                                            <p class="small fw-bold mt-2 pt-1 mb-0">
-                                                <a href="register.php">Create new account</a>
-                                            </p>
                                         </div>
                                     </form>
                                 </div>

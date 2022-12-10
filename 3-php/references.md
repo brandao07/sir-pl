@@ -1,4 +1,6 @@
 # References
+ 
+- [Project Structure](https://github.com/marcelowolfsmartindustries/my-profile)
 
 - [How to save images in MySQL](https://www.thecreativedev.com/how-to-store-a-file-in-database/#:~:text=There%20are%20two%20ways%20to,method%2C%20they%20might%20get%20confused.)
 
@@ -12,4 +14,4 @@
 
 - [PHP Docs](https://www.php.net/docs.php)
 
-- [Project Structure](https://github.com/marcelowolfsmartindustries/my-profile)
+- [php $_POST array empty upon form submission](https://stackoverflow.com/questions/1282909/php-post-array-empty-upon-form-submission)

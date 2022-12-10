@@ -41,6 +41,15 @@ $certificates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->prepare('SELECT * from social_medias WHERE id_me = 1 AND is_deleted = 0');
 $stmt->execute();
 $medias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// SUBMIT MESSAGE
+if (!empty($_POST)) {
+    $email = $_POST['email'] ?? '';
+    $subject= $_POST['subject'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $stmt = $pdo->prepare('INSERT INTO contact_requests (email, subject, description, id_me) VALUES (?, ?, ?, ?)');
+    $stmt->execute([$email, $subject,$description, 1]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -275,27 +284,25 @@ $medias = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
         <div class="col-12 col-md-12 col-lg-6 center-form">
-            <form>
+            <form action="index.php" method="post">
                 <div class="mb-3">
                     <label class="form-label" for="email">Email address</label>
                     <input
                             aria-describedby="emailHelp"
                             class="form-control"
-                            id="email"
+                            name="email"
                             type="email"
                     />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="subject">Subject</label>
-                    <input class="form-control" id="subject" type="text"/>
+                    <input class="form-control" name="subject" type="text"/>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" name="description" rows="3"></textarea>
                 </div>
-                <button class="btn btn-primary center-button" type="submit">
-                    Submit
-                </button>
+                <button class="btn btn-primary center-button" type="submit">Submit</button>
             </form>
         </div>
     </div>

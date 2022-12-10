@@ -110,6 +110,7 @@ p {
 }
 
 .footer-link {
+    color: #355C7D;
     text-decoration:none;
     cursor:pointer;
 }
