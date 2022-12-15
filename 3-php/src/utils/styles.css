@@ -148,6 +148,9 @@ body {
     padding: 15px 0;
     display: flex;
     flex-flow: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 .update form label {
     display: inline-flex;
