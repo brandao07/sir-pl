@@ -3,6 +3,12 @@ require "../../utils/functions.php";
 require "../../db/connection.php";
 
 $pdo = pdo_connect_mysql();
+
+if ($_SESSION["role"] != 1) {
+    header("location: ../dashboard/dashboard.php");
+    exit;
+}
+
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 $records_per_page = 20;
 

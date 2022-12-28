@@ -4,6 +4,11 @@ require "../../db/connection.php";
 
 $pdo = pdo_connect_mysql();
 
+if ($_SESSION["role"] != 1) {
+    header("location: ../dashboard/dashboard.php");
+    exit;
+}
+
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
@@ -90,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?=template_header('Create')?>
 
     <div class="content update">
-        <h2>Create about</h2>
+        <h2>Create user</h2>
         <form action="create.php" method="post">
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Andre" id="name">
@@ -105,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="password" name="confirm_password" placeholder="" id="confirm_password">
             <br>
             <label for="id_roles">Role</label>
-            <input type="text" name="id_roles" placeholder="" id="id_roles">
+            <input type="text" name="id_roles" placeholder="1 - ADMIN | 2 - MANAGER" id="id_roles">
             <br>
             <br>
             <input type="submit" value="Create">

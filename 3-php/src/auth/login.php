@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ../pages/abouts/read.php");
+    header("location: ../pages/dashboard/dashboard.php");
     exit;
 }
  
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["role"] = $role;
                             
                             //redirect
-                            header("location: ../pages/abouts/read.php");
+                            header("location: ../pages/dashboard/dashboard.php");
                         }
                         else{
 

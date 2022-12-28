@@ -3,6 +3,11 @@ require "../../utils/functions.php";
 require "../../db/connection.php";
 
 $pdo = pdo_connect_mysql();
+
+if ($_SESSION["role"] != 1) {
+    header("location: ../dashboard/dashboard.php");
+    exit;
+}
 $msg = '';
 if (isset($_GET['id'])) {
     $stmt = $pdo->prepare('SELECT * FROM contact_requests WHERE id = ?');
