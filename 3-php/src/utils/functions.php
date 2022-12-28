@@ -9,9 +9,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 function template_header($title) {
 	$username  = $_SESSION["username"];
+    $role = $_SESSION["role"];
 
-echo <<<EOT
-<!DOCTYPE html>
+    echo sprintf(
+    '<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -22,19 +23,22 @@ echo <<<EOT
 	<body>
     <nav class="navtop">
     	<div>
-    		<h1>Hello $username</h1>
-    		<a href="../messages/read.php"><i class="fas fa-address-book"></i>Messages</a>
+    		<h1>Hello %s</h1>
+    		%s
+    		%s
     		<a href="../medias/read.php"><i class="fas fa-address-book"></i>Medias</a>
     		<a href="../certificates/read.php"><i class="fas fa-address-book"></i>Certificates</a>
     		<a href="../skills/read.php"><i class="fas fa-address-book"></i>Skills</a>
     		<a href="../educations/read.php"><i class="fas fa-address-book"></i>Educations</a>
     		<a href="../abouts/read.php"><i class="fas fa-address-book"></i>Abouts</a>
     		<a href="../dashboard/dashboard.php"><i class="fas fa-address-book"></i>Dashboard</a>
-    		<a href="../users/read.php"><i class="fas fa-address-book"></i>Users</a>
 			<a href="../../auth/logout.php">Logout</a>
     	</div>
-    </nav>
-EOT;
+    </nav>',
+    $username,
+    $role == 1 ? '<a href="../messages/read.php"><i class="fas fa-address-book"></i>Messages</a>' : '',
+    $role == 1 ? '<a href="../users/read.php"><i class="fas fa-address-book"></i>Users</a>' : ''
+);
 }
 function template_footer() {
 echo <<<EOT

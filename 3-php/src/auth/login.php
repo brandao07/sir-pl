@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, username, password FROM users WHERE username = :username AND is_deleted = 0";
+        $sql = "SELECT id, username, password, id_roles FROM users WHERE username = :username AND is_deleted = 0";
         
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
@@ -40,12 +40,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $row["id"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
+                        $role = $row["id_roles"];
                         if(password_verify($password, $hashed_password)){
-                            //session_start();
-
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;
+                            $_SESSION["role"] = $role;
                             
                             //redirect
                             header("location: ../pages/abouts/read.php");
