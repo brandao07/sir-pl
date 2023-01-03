@@ -90,6 +90,8 @@ if (!empty($_POST)) {
     ></script>
     <!--External CSS -->
     <link href="styles.css" rel="stylesheet"/>
+    <!--External JS -->
+    <script src="script.js" defer></script>
 </head>
 <body>
 <!-- Hero Section -->
@@ -302,7 +304,7 @@ if (!empty($_POST)) {
                     <label class="form-label">Description</label>
                     <textarea class="form-control" name="description" rows="3"></textarea>
                 </div>
-                <button class="btn btn-primary center-button" type="submit">Submit</button>
+                <button id="form-submit" class="btn btn-primary center-button" type="submit">Submit</button>
             </form>
         </div>
     </div>
