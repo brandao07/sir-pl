@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/utils/styles.css" rel="stylesheet" type="text/css">
+    <script src="script.js"></script>
+    <title>Document</title>
+  </head>
+  <body style="margin: 1rem">
+    <label for="base_salary">Base Salary</label>
+    <input type="number" id="base_salary" placeholder="Enter Base Salary" />
+    <br>
+    <label for="meal_allowance">Meal Allowance</label>
+    <select name="meal_allowance" id="meal_allowance" style="margin-top: 2rem">
+      <option value="no_allowance">No meal allowance</option>
+      <option value="card">Card</option>
+      <option value="money">Money</option>
+    </select>
+    <br>
+    <label for="meal_allowance_amount">Meal Allowance Amount</label>
+    <input
+      type="number"
+      id="meal_allowance_amount"
+      placeholder="Enter Meal Allowance Amount"
+      value="0"
+      disabled
+      style="margin-top: 2rem"
+    />
+
+    <button id="calculate">Calculate</button>
+
+    <p>Your gross salary is: <span id="gross"></span></p>
+    <p>Your liquid salary is: <span id="liquid"></span></p>
+    <p>The taxes you pay are: <span id="taxes"></span></p>
+    <p>Discounts IRS: <span id="discount_irs"></span></p>
+    <p>Discounts SS: <span id="discount_ss"></span></p>
+
+    <button id="redirect" style="margin-top: 2rem">Back to Dashboard</button>
+  </body>
+</html>

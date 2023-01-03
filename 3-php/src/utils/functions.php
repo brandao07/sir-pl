@@ -26,6 +26,7 @@ function template_header($title) {
     		<h1>Hello %s</h1>
     		%s
     		%s
+    		%s
     		<a href="../medias/read.php"><i class="fas fa-address-book"></i>Medias</a>
     		<a href="../certificates/read.php"><i class="fas fa-address-book"></i>Certificates</a>
     		<a href="../skills/read.php"><i class="fas fa-address-book"></i>Skills</a>
@@ -37,7 +38,8 @@ function template_header($title) {
     </nav>',
     $username,
     $role == 1 ? '<a href="../messages/read.php"><i class="fas fa-address-book"></i>Messages</a>' : '',
-    $role == 1 ? '<a href="../users/read.php"><i class="fas fa-address-book"></i>Users</a>' : ''
+    $role == 1 ? '<a href="../users/read.php"><i class="fas fa-address-book"></i>Users</a>' : '',
+    $role == 1 ? '<a href="../../utils/salary.html"><i class="fas fa-address-book"></i>Salary</a>' : ''
 );
 }
 function template_footer() {
