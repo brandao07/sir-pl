@@ -1,7 +1,10 @@
-function popUp() {
-    alert("Thanks for your submission");
-}
+window.addEventListener("load", () => {
+    function popUp() {
+        alert("Thanks for your submission");
+    }
 
-const submitButton = document.getElementById("form-submit");
+    const submitButton = document.getElementById("form-submit");
 
-submitButton.addEventListener("click", popUp);
+    submitButton.addEventListener("click", popUp);
+
+});
