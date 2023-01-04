@@ -194,3 +194,7 @@ body {
 .delete .yesno a:hover {
     background-color: #32a367;
 }
+
+.margin-js {
+    margin: 1rem;
+}
