@@ -15,3 +15,6 @@
 ## Ex. 3
 - [Ex 3 PHP](./3-php)
   - [DB Diagram](./assets/db.png)
+
+## Ex. 4
+- [Ex 4 JS](./3-php/src/utils/script.js)
