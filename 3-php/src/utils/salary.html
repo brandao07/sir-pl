@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/utils/styles.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="script.js"></script>
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <title>Document</title>
-  </head>
-  <body class="margin-js">
-    <label for="base_salary">Base Salary</label>
-    <input type="number" id="base_salary" placeholder="Enter Base Salary" />
-    <br>
-    <label for="meal_allowance">Meal Allowance</label>
-    <select name="meal_allowance" id="meal_allowance" style="margin-top: 2rem">
-      <option value="no_allowance">No meal allowance</option>
-      <option value="card">Card</option>
-      <option value="money">Money</option>
-    </select>
-    <br>
-    <label for="meal_allowance_amount">Meal Allowance Amount</label>
+</head>
+<body class="margin-js">
+<label for="base_salary" >Base Salary</label>
+<input type="number" id="base_salary" placeholder="Enter Base Salary" required class="margin-js"/>
+<br>
+<label for="meal_allowance">Meal Allowance</label>
+<select name="meal_allowance" id="meal_allowance" required class="margin-js">
+    <option value="no_allowance">No meal allowance</option>
+    <option value="card">Meal Card</option>
+    <option value="money">Money</option>
+</select> <br>
+
+<label for="meal_allowance_amount">Meal Allowance Amount</label>
+<input
+        required
+        type="number"
+        id="meal_allowance_amount"
+        placeholder="Enter Meal Allowance Amount"
+        value="0"
+        disabled
+        class="margin-js"
+/>
+<div>
+    <label for="meal_days">How many days did you work?</label>
     <input
-      type="number"
-      id="meal_allowance_amount"
-      placeholder="Enter Meal Allowance Amount"
-      value="0"
-      disabled
-      class="margin-js"
+            required
+            type="number"
+            id="meal_days"
+            placeholder="Enter Meal Days"
+            value="0"
+            disabled
+            class="margin-js"
     />
+</div>
 
-    <button id="calculate">Calculate</button>
+<button id="calculate" class="margin-js">Calculate</button>
 
-    <p>Your gross salary is: <span id="gross"></span></p>
-    <p>Your liquid salary is: <span id="liquid"></span></p>
-    <p>The taxes you pay are: <span id="taxes"></span></p>
-    <p>Discounts IRS: <span id="discount_irs"></span></p>
-    <p>Discounts SS: <span id="discount_ss"></span></p>
+<p>Your gross salary is: <span id="gross_salary"></span></p>
+<p>The taxes you pay are: <span id="taxes"></span></p>
+<p>The ammout you receive as meal allowance: <span id="meal_allowance_value"></span></p>
+<p>Meal allowance that is taxed: <span id="meal_allowance_taxed"></span></p>
+<p>IRS tax: <span id="descontos_irs"></span></p>
+<p>SS tax: <span id="descontos_ss"></span></p>
+<p>Your net salary is: <span id="net_salary"></span></p>
 
-    <button id="redirect" class="margin-js">Back to Dashboard</button>
-  </body>
+<button id="redirect" class="margin-js">Back to Dashboard</button>
+</body>
 </html>

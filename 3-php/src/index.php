@@ -1,15 +1,6 @@
 <?php
 require "db/connection.php";
 
-function debug_to_console($data): void
-{
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('" . $output . "' );</script>";
-}
-
 $pdo = pdo_connect_mysql();
 
 // ME
