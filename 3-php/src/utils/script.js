@@ -59,7 +59,6 @@ window.addEventListener("load", () => {
         return 43.8;
     }
 
-
     function calculateMealAllowance (netSalary, grossSalary, typeMealAllowance, mealAllowance, mealDays) {
         let mealAllowanceTaxed = 0;
         if (typeMealAllowance === "no_allowance") {
@@ -88,39 +87,33 @@ window.addEventListener("load", () => {
 
     function calculateNetSalary() {
         let netSalaryTemp = 0;
-        let grossSalary = +document.getElementById("base_salary").value;
+
+        // Get User Input
         let typeMealAllowance = document.getElementById("meal_allowance").value;
-        let mealAllowance = +document.getElementById("meal_allowance_amount").value;
-        const mealDays =+document.getElementById("meal_days").value;
-        const result = calculateMealAllowance(
-            netSalaryTemp,
-            grossSalary,
-            typeMealAllowance,
-            mealAllowance,
-            mealDays
-        );
+        let mealAllowance =+ document.getElementById("meal_allowance_amount").value;
+        let grossSalary =+ document.getElementById("base_salary").value;
+        const mealDays =+ document.getElementById("meal_days").value;
+
+        const result = calculateMealAllowance(netSalaryTemp, grossSalary, typeMealAllowance, mealAllowance, mealDays);
         netSalaryTemp = result.netSalary;
         grossSalary = result.grossSalary;
+
+        // Get Values
         const taxOwed = getTaxRate(grossSalary, taxes);
+        const discount_ss = grossSalary * (11 / 100);
+        const discount_irs = grossSalary * (taxOwed / 100);
+        const netSalary = grossSalary - discount_irs - discount_ss + netSalaryTemp;
 
-        const descontos_ss = grossSalary * (11 / 100);
-        const descontos_irs = grossSalary * (taxOwed / 100);
-
-        const netSalary =
-            grossSalary - descontos_irs - descontos_ss + netSalaryTemp;
         // Display values to the HTML
         document.getElementById("net_salary").textContent = netSalary.toFixed(2);
-        document.getElementById("descontos_irs").textContent =
-            descontos_irs.toFixed(2);
-        document.getElementById("descontos_ss").textContent =
-            descontos_ss.toFixed(2);
-        document.getElementById("gross_salary").textContent =
-            grossSalary.toFixed(2);
+        document.getElementById("discount_irs").textContent = discount_irs.toFixed(2);
+        document.getElementById("discount_ss").textContent = discount_ss.toFixed(2);
+        document.getElementById("gross_salary").textContent = grossSalary.toFixed(2);
         document.getElementById("taxes").textContent = taxOwed.toFixed(2) + "%";
-        document.getElementById("meal_allowance_value").textContent =
-            (mealDays * mealAllowance).toFixed(2);
-        document.getElementById("meal_allowance_taxed").textContent =
-            (result.mealAllowanceTaxed * mealDays).toFixed(2);
+        document.getElementById("meal_allowance_value").textContent = (mealDays * mealAllowance).
+        toFixed(2);
+        document.getElementById("meal_allowance_taxed").textContent = (result.mealAllowanceTaxed * mealDays).
+        toFixed(2);
     }
 
     // Redirects to Dashboard
@@ -128,6 +121,7 @@ window.addEventListener("load", () => {
         location.replace("../pages/dashboard/dashboard.php");
     }
 
+    // Buttons
     const calculateButton = document.getElementById("calculate");
     calculateButton.addEventListener("click", calculateNetSalary);
     const redirectButton = document.getElementById("redirect");

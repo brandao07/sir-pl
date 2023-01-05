@@ -16,4 +16,6 @@
 
 - [php $_POST array empty upon form submission](https://stackoverflow.com/questions/1282909/php-post-array-empty-upon-form-submission)
 
-oYzt/RPrnCJVbLn8
+## Salary Calculator
+
+The Salary Calculator was built together with some colleagues. 
