@@ -23,7 +23,7 @@ if (!empty($_POST)) {
         $uploadOk = 0;
     }
 
-    $bd_upload = "3-php/src/assets/";
+    $bd_upload = "./assets/";
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
