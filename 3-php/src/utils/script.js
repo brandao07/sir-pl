@@ -11,6 +11,10 @@ window.addEventListener("load", () => {
         25505: 43.8,
     };
 
+    const discountCard = 7.63;
+    const discountMoney = 4.77;
+    const workDays = 22;
+
     // Meal Card, Money, None
     let typeMealAllowance = document.getElementById("meal_allowance");
     let mealAllowance = document.getElementById("meal_allowance_amount");
@@ -65,20 +69,20 @@ window.addEventListener("load", () => {
             return {netSalary: netSalary, grossSalary: grossSalary};
         }
         if (typeMealAllowance === "card") {
-            if (mealAllowance >= 7.33) {
-                mealAllowanceTaxed = mealAllowance - 7.33;
-                grossSalary = grossSalary + (mealAllowance - 7.33) * mealDays;
-                netSalary = netSalary + 7.33 * mealDays;
+            if (mealAllowance >= discountCard) {
+                mealAllowanceTaxed = mealAllowance - discountCard;
+                grossSalary = grossSalary + (mealAllowance - discountCard) * mealDays;
+                netSalary = netSalary + discountCard * mealDays;
             } else {
-                netSalary = netSalary + mealAllowance * 22;
+                netSalary = netSalary + mealAllowance * workDays;
             }
             return {netSalary: netSalary, grossSalary: grossSalary, mealAllowanceTaxed: mealAllowanceTaxed};
         }
 
-        if (mealAllowance >= 4.57) {
-            mealAllowanceTaxed = mealAllowance - 4.57;
-            grossSalary = grossSalary + (mealAllowance - 4.57) * mealDays;
-            netSalary = netSalary + 4.57 * 22;
+        if (mealAllowance >= discountMoney) {
+            mealAllowanceTaxed = mealAllowance - discountMoney;
+            grossSalary = grossSalary + (mealAllowance - discountMoney) * mealDays;
+            netSalary = netSalary + discountMoney * workDays;
         } else {
             netSalary = netSalary + mealAllowance * mealDays;
         }
